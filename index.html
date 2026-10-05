@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cultivando Culturas — Guia do participante e recursos</title>
+<meta name="description" content="Apostila digital interativa do curso Cultivando Culturas | Certificação Internacional no modelo Barrett. O conteúdo é fixo; as respostas e anotações do participante são salvas no navegador.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#leitor">Ir para o conteúdo da página</a>
+
+<div id="app">
+  <header class="topbar" role="banner">
+    <button class="btn btn-ghost" id="btnIndice" aria-expanded="false" aria-controls="indice" title="Abrir ou fechar o índice (tecla I)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="lbl">Índice</span>
+    </button>
+
+    <div class="brand" aria-hidden="true">
+      <span class="brand-1">Cultivando Culturas</span>
+      <span class="brand-2">Guia do participante e recursos</span>
+    </div>
+
+    <nav class="pager" aria-label="Navegação entre páginas">
+      <button class="btn" id="btnPrev" title="Página anterior (←)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="lbl">Página anterior</span>
+      </button>
+      <div class="pageind" id="pageInd" role="status" aria-live="polite">
+        <label for="pageInput" id="pageLbl">Página</label>
+        <input id="pageInput" type="text" inputmode="numeric" autocomplete="off" aria-describedby="pageTotal" value="1">
+        <span id="pageTotal">de 84</span>
+      </div>
+      <button class="btn" id="btnNext" title="Próxima página (→)">
+        <span class="lbl">Próxima página</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </nav>
+
+    <div class="tools">
+      <div class="seg" role="group" aria-label="Modo de leitura">
+        <button class="btn btn-seg" id="btnSingle" aria-pressed="true" title="Uma página por vez">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="4" width="10" height="16" rx="1"/></svg><span class="sr">Uma página</span></button>
+        <button class="btn btn-seg" id="btnSpread" aria-pressed="false" title="Duas páginas lado a lado (livro)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="8" height="16" rx="1"/><rect x="13" y="4" width="8" height="16" rx="1"/></svg><span class="sr">Duas páginas</span></button>
+      </div>
+      <div class="seg" role="group" aria-label="Zoom">
+        <button class="btn btn-seg" id="zoomOut" title="Diminuir (−)" aria-label="Diminuir zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg></button>
+        <button class="btn btn-seg zoomval" id="zoomVal" title="Voltar ao tamanho padrão" aria-label="Zoom atual — clique para restaurar">100%</button>
+        <button class="btn btn-seg" id="zoomIn" title="Aumentar (+)" aria-label="Aumentar zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12M12 6v12"/></svg></button>
+      </div>
+
+      <button class="btn btn-primary" id="btnPdf" title="Gerar um PDF da apostila com as suas respostas">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg><span class="lbl">Exportar PDF</span>
+      </button>
+
+      <div class="menuwrap">
+        <button class="btn btn-ghost" id="btnMenu" aria-haspopup="true" aria-expanded="false" aria-controls="menuRespostas" title="Backup, restauração e limpeza das suas respostas">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg><span class="lbl">Minhas respostas</span>
+        </button>
+        <div class="menu" id="menuRespostas" role="menu" hidden>
+          <button role="menuitem" id="btnBackup">Backup <small>baixar arquivo com as minhas respostas</small></button>
+          <button role="menuitem" id="btnRestaurar">Restaurar <small>carregar um backup salvo</small></button>
+          <hr>
+          <button role="menuitem" id="btnLimpar" class="danger">Limpar minhas respostas</button>
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+  <div class="hint" id="hint" role="note" hidden>
+    <span><b>O conteúdo da apostila é fixo.</b> Os espaços em lilás claro são seus: escreva neles — tudo é salvo automaticamente neste navegador.</span>
+    <button class="btn btn-ghost" id="hintClose">Entendi</button>
+  </div>
+
+  <div class="body">
+    <aside class="indice" id="indice" aria-label="Índice da apostila" hidden>
+      <div class="indice-head">
+        <strong>Índice</strong>
+        <button class="btn btn-ghost" id="indiceClose" aria-label="Fechar índice"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <nav id="toc" aria-label="Seções e páginas"></nav>
+    </aside>
+    <div class="scrim" id="scrim" hidden></div>
+
+    <main class="leitor" id="leitor" tabindex="-1">
+      <button class="edge edge-prev" id="edgePrev" aria-label="Página anterior" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="edge edge-next" id="edgeNext" aria-label="Próxima página" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="scroller" id="scroller">
+        <div class="stage" id="stage"></div>
+        <p class="legend" aria-hidden="true"><i class="sw sw-fixed"></i>Conteúdo da apostila (fixo) <i class="sw sw-mine"></i>Minhas respostas (editável)</p>
+      </div>
+    </main>
+  </div>
+  <footer class="statusbar">
+    <div class="status" aria-live="polite">
+      <span class="progress" id="progress" title="">
+        <span class="progress-txt">Progresso da apostila: <b id="progressPct">0%</b></span>
+        <span class="progress-bar" aria-hidden="true"><i id="progressBar"></i></span>
+      </span>
+      <span class="saved" id="saved"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span id="savedTxt">Salvo automaticamente</span></span>
+    </div>
+  </footer>
+</div>
+
+<!-- Raiz de impressão: montada só ao exportar/imprimir -->
+<div id="printRoot" aria-hidden="true"></div>
+
+<input type="file" id="fileImport" accept="application/json,.json" hidden>
+
+<dialog id="dlgLimpar" aria-labelledby="dlgLimparT">
+  <form method="dialog">
+    <h2 id="dlgLimparT">Limpar minhas respostas</h2>
+    <p>Essa ação apagará todas as respostas e anotações salvas neste navegador. Deseja continuar?</p>
+    <menu>
+      <button value="cancel" class="btn" autofocus>Cancelar</button>
+      <button value="ok" class="btn btn-danger" id="dlgLimparOk">Apagar tudo</button>
+    </menu>
+  </form>
+</dialog>
+
+<dialog id="dlgRestaurar" aria-labelledby="dlgRestaurarT">
+  <form method="dialog">
+    <h2 id="dlgRestaurarT">Restaurar respostas</h2>
+    <p id="dlgRestaurarTxt"></p>
+    <menu>
+      <button value="cancel" class="btn" autofocus>Cancelar</button>
+      <button value="ok" class="btn btn-primary" id="dlgRestaurarOk">Restaurar</button>
+    </menu>
+  </form>
+</dialog>
+
+<dialog id="dlgPdf" aria-labelledby="dlgPdfT">
+  <form method="dialog">
+    <h2 id="dlgPdfT">Exportar apostila preenchida em PDF</h2>
+    <p>Vamos abrir a janela de impressão do navegador. Nela, escolha <b>“Salvar como PDF”</b> como destino.</p>
+    <p class="small">Dica: em “Mais definições”, deixe as margens em <b>Nenhuma</b> e desmarque <b>Cabeçalhos e rodapés</b>. O PDF terá as 84 páginas, com o conteúdo original e as suas respostas.</p>
+    <menu>
+      <button value="cancel" class="btn">Cancelar</button>
+      <button value="ok" class="btn btn-primary" id="dlgPdfOk" autofocus>Continuar</button>
+    </menu>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="assets/data/pages.js"></script>
+<script src="assets/data/text-layer.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

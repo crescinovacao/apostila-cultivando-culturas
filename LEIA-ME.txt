@@ -1,0 +1,19 @@
+APOSTILA DIGITAL INTERATIVA — Cultivando Culturas
+
+COMO ABRIR
+  Dê dois cliques em index.html (Chrome, Edge, Firefox ou Safari). Não precisa de internet, servidor ou login.
+  Mantenha a pasta inteira junta (index.html, styles.css, script.js e assets/).
+
+SALVAMENTO
+  Tudo o que você escreve é salvo sozinho no navegador (localStorage). Use sempre o mesmo navegador e
+  não mude a pasta de lugar. Para garantir, use  Minhas respostas > Backup  e guarde o arquivo .json.
+  Para voltar: Minhas respostas > Restaurar.
+
+PDF
+  Botão "Exportar PDF" > Continuar > na janela de impressão escolha "Salvar como PDF"
+  (margens: Nenhuma; desmarque Cabeçalhos e rodapés).
+
+MANUTENÇÃO
+  assets/data/pages.js       títulos, seções e campos editáveis (editar à mão)
+  assets/data/text-layer.js  texto das páginas (gerado: tools/build_data.py)
+  assets/pages/pagina-NN.jpg páginas originais
